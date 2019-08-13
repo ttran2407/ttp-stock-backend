@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :transactions
     resources :watchlists
-    resources :holidings
+    resources :holdings
   end 
 
   resources :stocks, only: [:index, :show]
