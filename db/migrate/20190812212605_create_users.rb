@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password_digest
       t.string :cash
-      t.string :no-test-framework
+
 
       t.timestamps
     end

@@ -5,6 +5,8 @@ class CreateTransactions < ActiveRecord::Migration[5.2]
       t.string :stock_id
       t.string :stock_price
       t.string :quantity
+      t.string :ticker
+      t.string :transaction_type
 
       t.timestamps
     end

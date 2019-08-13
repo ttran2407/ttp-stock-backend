@@ -4,6 +4,7 @@ class CreateHoldings < ActiveRecord::Migration[5.2]
       t.string :user_id
       t.string :stock_id
       t.string :quantity
+      t.string :ticker
 
       t.timestamps
     end
