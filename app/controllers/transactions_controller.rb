@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
     def index 
         @user = User.find(params[:user_id])
         @transactions = @user.transactions
-        render json: @transaction
+        render json: @transactions
     end
 
     def create
