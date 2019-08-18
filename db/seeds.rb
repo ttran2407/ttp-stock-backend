@@ -18,7 +18,7 @@ data.each do |stock|
 end
 
 
-User.create(name: "Tien Tran", password: "123456",password_confirmation: "123456", cash: 100000)
+User.create(name: "Tien Tran",email: "tientran2407.vn@gmail.com" password: "123456",password_confirmation: "123456", cash: 100000)
 
 Transaction.create(user_id: 1, stock_id: 7798, quantity: 10, stock_price:
 340, ticker: "TSLA", transaction_type: "BUY")

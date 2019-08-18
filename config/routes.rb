@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :watchlists
     resources :holdings
   end 
+  post '/login', to: 'auth#create'
+  get '/current_user', to: 'auth#show'
+
 
   resources :stocks, only: [:index, :show]
 

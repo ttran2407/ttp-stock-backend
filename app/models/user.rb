@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :stocks, through: :watchlists
     has_many :stocks, through: :holdings
 
-    validates :email, uniqueness: { case_sensitive: false }
+    validates :email, uniqueness: { case_sensitive: false }, presence: true
     has_secure_password
 end
+
