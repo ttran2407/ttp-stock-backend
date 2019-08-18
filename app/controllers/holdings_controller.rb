@@ -8,7 +8,6 @@ class HoldingsController < ApplicationController
     def create
         @user = User.find(holding_params[:user_id])
         @holding = @user.holdings.find_by(ticker: holding_params[:ticker])
-        byebug
         if  @holding != nil
             @holding.update(quantity: (holding_params[:quantity] + @holding[:quantity]))
         else
@@ -19,14 +18,16 @@ class HoldingsController < ApplicationController
             ticker: holding_params[:ticker],
         )
         end
+        
+        @cost = holding_params[:quantity] * params[:stock_price]
 
-        @cost = holding_params[:quantity] * holding_params[:price]
         @user.update(cash: (@user[:cash].to_i - @cost))
         @holdings = @user.holdings
         render json: {holdings: @holdings,user: @user}
     end
 
     def update
+
         @holding = Holding.find(holding_params[:id])
         if @holding[:quantity] > holding_params[:quantity]
         @holding.update(quantity: (@holding[:quantity] - holding_params[:quantity]))
@@ -34,9 +35,10 @@ class HoldingsController < ApplicationController
         @holding.destroy
         end
         @user = User.find(holding_params[:user_id])
-        @revenue = holding_params[:quantity] * params[:price]
+        @revenue = holding_params[:quantity] * params[:stock_price]
         @user.update(cash: (@user[:cash].to_i + @revenue))
         @holdings = @user.holdings
+        
         render json: {holdings: @holdings, user: @user}
     end
 

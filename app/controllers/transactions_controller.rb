@@ -15,9 +15,10 @@ class TransactionsController < ApplicationController
             stock_price: transaction_params[:stock_price],
             transaction_type: transaction_params[:transaction_type],
         )
-        # @user = User.find(params[:user_id])
-        # @transactions = @user.transactions
-        render json: @transaction
+        @user = User.find(params[:user_id])
+        @holding = @user.holdings.find_by(ticker: transaction_params[:ticker])
+
+        render json: [@transaction, @holding]
     end
 
     private
