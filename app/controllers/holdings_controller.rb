@@ -8,7 +8,7 @@ class HoldingsController < ApplicationController
     def create
         @user = User.find(holding_params[:user_id])
         @holding = @user.holdings.find_by(ticker: holding_params[:ticker])
-        
+        byebug
         if  @holding != nil
             @holding.update(quantity: (holding_params[:quantity] + @holding[:quantity]))
         else

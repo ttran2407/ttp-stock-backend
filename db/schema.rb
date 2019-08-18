@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_08_12_213117) do
   enable_extension "plpgsql"
 
   create_table "holdings", force: :cascade do |t|
-    t.string "user_id"
-    t.string "stock_id"
-    t.string "quantity"
+    t.integer "user_id"
+    t.integer "stock_id"
+    t.integer "quantity"
     t.string "ticker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2019_08_12_213117) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "user_id"
-    t.string "stock_id"
-    t.string "stock_price"
-    t.string "quantity"
+    t.integer "user_id"
+    t.integer "stock_id"
+    t.float "stock_price"
+    t.integer "quantity"
     t.string "ticker"
     t.string "transaction_type"
     t.datetime "created_at", null: false
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_08_12_213117) do
   end
 
   create_table "watchlists", force: :cascade do |t|
-    t.string "user_id"
-    t.string "stock_id"
+    t.integer "user_id"
+    t.integer "stock_id"
     t.string "ticker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
